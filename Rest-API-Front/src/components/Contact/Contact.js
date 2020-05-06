@@ -5,8 +5,7 @@ import { Link } from "react-router-dom";
 import { Card, Button } from "react-bootstrap";
 import "./Contact.css";
 
-// import ModalForm from "./Modal";
-// import "./Modal.css";
+
 
 const Contact = (props) => {
   const deleteContact = (contactid) => {
@@ -29,10 +28,10 @@ const Contact = (props) => {
           >
             Delete
           </Button>
-          <Link to="/addcontact">
+          <Link to={`/editcontact/${props.user._id}`}>
             <Button className="btn btn-success btn-update">Update</Button>
           </Link>
-          {/* <ModalForm name="Update" user={props.user}/> */}
+         
         </div>
       </Card.Body>
     </Card>

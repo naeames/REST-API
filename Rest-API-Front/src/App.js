@@ -21,7 +21,7 @@ function App() {
           </Link>
         </div>
       </div>
-      <Route exact path="/addcontact" component={AddContact}></Route>
+      <Route exact path="/editcontact/:id" component={AddContact}></Route>
       <Route exact path="/contactlist" component={ContactList} />
     </Router>
   );

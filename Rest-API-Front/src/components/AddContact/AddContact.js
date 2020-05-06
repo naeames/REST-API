@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 
@@ -9,21 +9,35 @@ function AddContact(props) {
   const [name, setName] = useState(props.user ? props.user.name : "");
   const [email, setEmail] = useState(props.user ? props.user.email : "");
   const [phone, setPhone] = useState(props.user ? props.user.phone : "");
+ 
+  useEffect(() => {
+    async function getUser() {
+      const response = await axios.get(
+        `http://localhost:4000/${props.match.params.id}`
+      );
+      setName(response.data.name);
+      setEmail(response.data.email);
+      setPhone(response.data.phone);
+    }
+    getUser();
+  }, [props.match.params.id]);
 
   const add = () => {
     axios
       .post("http://localhost:4000/", { name, email, phone })
-      .then(() => setName(""), setEmail(""), setPhone())
+      .then(() => setName(""), setEmail(""), setPhone(""))
       .catch((err) => console.error(err));
   };
 
   const update = () => {
     axios
-      .put(`http://localhost:4000/${props.user._id}`, { name, email, phone })
+      .put(`http://localhost:4000/${props.user._id}`,{ name, email, phone })
       .then((res) => console.log("Contact was updated with success"))
       .catch((err) => console.error(err));
   };
 
+  
+   
   return (
     <div className="addcontact-container">
       <input

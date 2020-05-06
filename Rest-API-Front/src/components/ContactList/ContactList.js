@@ -4,7 +4,7 @@ import axios from "axios";
 import Contact from "../Contact/Contact";
 import "./ContactList.css"
 
-// import ModalForm from "./Modal";
+
 
 const ContactList = () => {
   const [userDatabase, setUserDatabase] = useState([]);
@@ -25,7 +25,7 @@ const ContactList = () => {
             <Contact user={user} />
           </div>
         ))}
-        {/* <ModalForm name="Add Contact" /> */}
+      
       </div>
     </Fragment>
   );
